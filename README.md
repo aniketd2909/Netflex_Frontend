@@ -1,6 +1,7 @@
 # Notflix
 
-![Uploading image.png…]()
+<img width="1435" alt="Screenshot 2024-06-28 at 9 26 33 PM" src="https://github.com/aniketd2909/Netflex_Frontend/assets/44261210/898163bb-669a-4433-98e3-b81a3032cbe5">
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.4.
 
