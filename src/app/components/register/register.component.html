@@ -1,0 +1,39 @@
+<div class="form-container">
+  <div class="example-container">
+    <div class="form-info">
+      <p>STEP 1 OF 3</p>
+      <p>Create a password to start your membership</p>
+      <p>Just a Few more steps and you're done!</p>
+      <p>We hate paperwork, too.</p>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Enter your name</mat-label>
+      <input
+        matInput
+        placeholder=""
+        [formControl]="name"
+        (blur)="updateErrorMessage()"
+        required
+      />
+      @if (name.invalid) {
+      <mat-error>{{ errorMessage() }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="clickEvent($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-flat-button>Next</button>
+  </div>
+</div>
