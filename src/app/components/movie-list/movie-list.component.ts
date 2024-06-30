@@ -12,6 +12,7 @@ import { MovieService } from '../../service/movie.service';
 export class MovieListComponent {
   items: any[] = mockdata.results;
   movies$ = new Observable<Card[]>();
+  abc: number = 1;
 
   constructor(private movieService: MovieService) {}
   ngOnInit() {
