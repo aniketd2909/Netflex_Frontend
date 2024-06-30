@@ -1,0 +1,30 @@
+<mat-card
+  class="example-card custom-card"
+  [style]="{
+    'background-image':
+      'url(' + base_url + poster_size + movie.poster_path + ')'
+  }"
+  appearance="outlined"
+>
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>{{ movie.title }}</mat-card-title>
+      <mat-card-subtitle>{{ movie.release_date }}</mat-card-subtitle>
+      <img
+        mat-card-xl-image
+        [src]="base_url + poster_size + movie.poster_path"
+      />
+    </mat-card-title-group>
+  </mat-card-header>
+  <br />
+  <mat-card-content *ngIf="!showFullContent">{{
+    movie.overview.substring(0, 80) + "..."
+  }}</mat-card-content>
+  <mat-card-content *ngIf="showFullContent">{{
+    movie.overview
+  }}</mat-card-content>
+  <br />
+  <div class="show-button">
+    <button mat-button (click)="toggleButton()">Show Details</button>
+  </div>
+</mat-card>
