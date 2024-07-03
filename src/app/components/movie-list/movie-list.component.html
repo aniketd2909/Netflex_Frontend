@@ -1,7 +1,27 @@
+<!-- <cdk-virtual-scroll-viewport
+  itemSize="500"
+  (scrolledIndexChange)="onScroll()"
+  class="movie-list-viewport"
+>
+  <div class="movie-list">
+    <app-movie-item
+      *cdkVirtualFor="let movie of movies$ | async"
+      [movie]="movie"
+    ></app-movie-item>
+  </div>
+</cdk-virtual-scroll-viewport> -->
+
 <div class="movie-list">
   <app-movie-item
     *ngFor="let movie of movies$ | async"
     [movie]="movie"
   ></app-movie-item>
 </div>
-<!-- <p *ngFor="let movie of movies$ | async">{{ movie.title }}</p> -->
+
+<div
+  infinite-scroll
+  [infiniteScrollDistance]="1"
+  [infiniteScrollUpDistance]="1.5"
+  [infiniteScrollThrottle]="300"
+  (scrolled)="onScroll()"
+></div>

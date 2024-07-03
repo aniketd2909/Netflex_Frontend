@@ -14,13 +14,20 @@ export class MovieListComponent {
   items: any[] = mockdata.results;
   movies$!: Observable<Card[]>;
   sb = new Subscription();
+  currentPage: number = 1;
 
   constructor(private movieService: MovieService) {}
   ngOnInit() {
-    this.sb = this.movieService.getMovies().subscribe();
+    this.sb = this.movieService
+      .getMovies(this.currentPage.toString())
+      .subscribe();
     this.movies$ = this.movieService.movieslist$;
   }
   ngOnDestroy() {
     this.sb.unsubscribe();
+  }
+  onScroll() {
+    console.log('scroll');
+    this.movieService.getMovies(this.currentPage.toString()).subscribe();
   }
 }

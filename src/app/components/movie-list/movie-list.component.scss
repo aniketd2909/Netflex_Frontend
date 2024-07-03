@@ -5,5 +5,15 @@
   gap: 10px;
   align-items: center;
   justify-content: center;
-  margin-top: 2%;
+  margin-top: 1%;
 }
+.movie-list-viewport {
+  height: 100%;
+  width: 100%;
+}
+
+// .movie-list-viewport {
+//   height: 100%; /* Adjust as needed */
+//   width: 100%;
+//   overflow: auto;
+// }

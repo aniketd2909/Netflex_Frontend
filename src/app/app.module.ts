@@ -23,6 +23,8 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
 import { MatCardModule } from '@angular/material/card';
 import { FooterComponent } from './components/footer/footer.component';
 import { CoverComponent } from './components/cover/cover.component';
+import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -54,6 +56,8 @@ const routes: Routes = [
     MatIconModule,
     MatButtonModule,
     MatCardModule,
+    InfiniteScrollDirective,
+    ScrollingModule,
     RouterModule.forRoot(routes),
   ],
   providers: [
