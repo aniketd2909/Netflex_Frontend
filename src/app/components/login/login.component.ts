@@ -1,7 +1,8 @@
 import { Component, Renderer2, signal } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { merge } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +10,17 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  readonly email = new FormControl('', [Validators.required, Validators.email]);
+  loginForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required]),
+  });
+
+  get email() {
+    return this.loginForm.controls['email'];
+  }
   errorMessage = signal('');
   backGroundUrl: string = '/assets/img/Cover-Page.png';
-  constructor() {
+  constructor(private router: Router) {
     merge(this.email.statusChanges, this.email.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage());
@@ -31,5 +39,10 @@ export class LoginComponent {
   hide: boolean = true;
   clickEvent(event: MouseEvent) {
     this.hide = !this.hide;
+  }
+
+  onSubmit() {
+    // console.log(this.loginForm.value);
+    this.router.navigate(['/movielist']);
   }
 }

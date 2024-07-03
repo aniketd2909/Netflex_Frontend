@@ -4,60 +4,62 @@
 >
   <app-navbar [currentPage]="'login'"></app-navbar>
 
-  <div class="form-container">
-    <div class="example-container">
-      <div class="form-info">
-        <p>Sign In</p>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-container">
+      <div class="example-container">
+        <div class="form-info">
+          <p>Sign In</p>
+        </div>
+        <mat-form-field>
+          <mat-label for="email">Enter your email</mat-label>
+          <input
+            matInput
+            placeholder="pat@example.com"
+            (blur)="updateErrorMessage()"
+            id="email"
+            formControlName="email"
+          />
+          @if (email.invalid) {
+          <mat-error>{{ errorMessage() }}</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label for="password">Enter your password</mat-label>
+          <input
+            formControlName="password"
+            matInput
+            id="password"
+            [type]="hide ? 'password' : 'text'"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="clickEvent($event)"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <button mat-flat-button type="submit">Sign In</button>
       </div>
-      <mat-form-field>
-        <mat-label>Enter your email</mat-label>
-        <input
-          matInput
-          placeholder="pat@example.com"
-          class="form-control"
-          [formControl]="email"
-          (blur)="updateErrorMessage()"
-          required
-        />
-        @if (email.invalid) {
-        <mat-error>{{ errorMessage() }}</mat-error>
-        }
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Enter your password</mat-label>
-        <input
-          class="form-control"
+    </div>
+  </form>
+  <app-footer></app-footer>
+</div>
+
+<!-- <input
           matInput
           [type]="hide ? 'password' : 'text'"
+          placeholder="Enter Password"
         />
         <button
           mat-icon-button
-          matSuffix
-          (click)="clickEvent($event)"
+          (click)="hide = !hide"
           [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="hide"
         >
           <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-        </button>
-      </mat-form-field>
-
-      <!-- <input
-        matInput
-        [type]="hide ? 'password' : 'text'"
-        placeholder="Enter Password"
-      />
-      <button
-        mat-icon-button
-        (click)="hide = !hide"
-        [attr.aria-label]="'Hide password'"
-        [attr.aria-pressed]="hide"
-      >
-        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-      </button> -->
-
-      <button mat-flat-button>Sign In</button>
-    </div>
-  </div>
-
-  <app-footer></app-footer>
-</div>
+        </button> -->

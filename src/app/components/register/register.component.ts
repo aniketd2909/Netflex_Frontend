@@ -1,6 +1,7 @@
 import { Component, ElementRef, Renderer2, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { merge } from 'rxjs';
 
 @Component({
@@ -9,18 +10,22 @@ import { merge } from 'rxjs';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-  readonly name = new FormControl('', [Validators.required]);
+  registerForm = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required]),
+  });
 
+  get name() {
+    return this.registerForm.controls['name'];
+  }
   errorMessage = signal('');
   backGroundUrl: string = '/assets/img/Cover-Page2.png';
-  constructor() {
+  constructor(private router: Router) {
     merge(this.name.statusChanges, this.name.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage());
   }
-  ngOnInit() {
-    console.log(this.backGroundUrl);
-  }
+  ngOnInit() {}
 
   updateErrorMessage() {
     if (this.name.hasError('required')) {
@@ -33,5 +38,9 @@ export class RegisterComponent {
   hide: boolean = true;
   clickEvent(event: MouseEvent) {
     this.hide = !this.hide;
+  }
+  onSubmit() {
+    // console.log(this.registerForm.value);
+    this.router.navigate(['/movielist']);
   }
 }

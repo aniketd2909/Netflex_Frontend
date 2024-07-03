@@ -3,50 +3,55 @@
   [style]="{ width: '100%', height: '100%' }"
 > -->
 <app-navbar [currentPage]="'register'"></app-navbar>
-<div class="form-container">
-  <div class="example-container">
-    <div class="form-info">
-      <p>STEP 1 OF 3</p>
-      <p [style]="{ 'font-size': '1.5em' }">
-        Create a password to start your membership
-      </p>
-      <p>Just a Few more steps and you're done!</p>
-      <p>We hate paperwork, too.</p>
-    </div>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="form-container">
+    <div class="example-container">
+      <div class="form-info">
+        <p>STEP 1 OF 3</p>
+        <p [style]="{ 'font-size': '1.5em' }">
+          Create a password to start your membership
+        </p>
+        <p>Just a Few more steps and you're done!</p>
+        <p>We hate paperwork, too.</p>
+      </div>
 
-    <input
-      matInput
-      class="form-control"
-      placeholder="Enter your name"
-      [formControl]="name"
-      (blur)="updateErrorMessage()"
-      required
-    />
-    <div style="text-align: left">
-      @if (name.invalid) {
-      <mat-error>{{ errorMessage() }}</mat-error>
-      }
-    </div>
-
-    <div class="input-container">
       <input
         matInput
         class="form-control"
-        [type]="hide ? 'password' : 'text'"
-        placeholder="Enter Password"
+        placeholder="Enter your name"
+        formControlName="name"
+        id="name"
+        (blur)="updateErrorMessage()"
       />
-      <button
-        mat-icon-button
-        class="toggle-button"
-        (click)="hide = !hide"
-        [attr.aria-label]="'Hide password'"
-        [attr.aria-pressed]="hide"
-      >
-        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-      </button>
+      <div style="text-align: left">
+        @if (name.invalid) {
+        <mat-error>{{ errorMessage() }}</mat-error>
+        }
+      </div>
+
+      <div class="input-container">
+        <input
+          matInput
+          class="form-control"
+          [type]="hide ? 'password' : 'text'"
+          placeholder="Enter Password"
+          formControlName="password"
+          id="password"
+        />
+        <button
+          mat-icon-button
+          class="toggle-button"
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+          type="button"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </div>
+      <button type="submit" mat-flat-button>Next</button>
     </div>
-    <button mat-flat-button>Next</button>
   </div>
-</div>
+</form>
 <app-footer></app-footer>
 <!-- </div> -->
