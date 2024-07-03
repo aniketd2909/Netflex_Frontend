@@ -12,14 +12,15 @@ export class RegisterComponent {
   readonly name = new FormControl('', [Validators.required]);
 
   errorMessage = signal('');
-
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+  backGroundUrl: string = '/assets/img/Cover-Page2.png';
+  constructor() {
     merge(this.name.statusChanges, this.name.valueChanges)
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage());
   }
-
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.backGroundUrl);
+  }
 
   updateErrorMessage() {
     if (this.name.hasError('required')) {

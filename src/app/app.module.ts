@@ -21,6 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MovieItemComponent } from './components/movie-item/movie-item.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { MatCardModule } from '@angular/material/card';
+import { FooterComponent } from './components/footer/footer.component';
+import { CoverComponent } from './components/cover/cover.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -28,7 +30,6 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'movieitem', component: MovieItemComponent },
   { path: 'movielist', component: MovieListComponent },
-  { path: '**', component: HomeComponent },
 ];
 @NgModule({
   declarations: [
@@ -39,15 +40,17 @@ const routes: Routes = [
     NavbarComponent,
     MovieItemComponent,
     MovieListComponent,
+    FooterComponent,
+    CoverComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    MatFormFieldModule,
     FormsModule,
-    MatInputModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatIconModule,
     MatButtonModule,
     MatCardModule,

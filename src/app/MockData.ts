@@ -412,3 +412,9 @@ export const configuration = {
     'videos',
   ],
 };
+
+export const backgroundUrls = [
+  '/assets/img/scroll-page.png',
+  '/assets/img/scroll-page2.png',
+  '/assets/img/scroll-page3.png',
+];

@@ -1,35 +1,63 @@
-<div class="form-container">
-  <div class="example-container">
-    <div class="form-info">
-      <p>Sign In</p>
-    </div>
-    <mat-form-field>
-      <mat-label>Enter your email</mat-label>
-      <input
-        matInput
-        placeholder="pat@example.com"
-        [formControl]="email"
-        (blur)="updateErrorMessage()"
-        required
-      />
-      @if (email.invalid) {
-      <mat-error>{{ errorMessage() }}</mat-error>
-      }
-    </mat-form-field>
+<div
+  [style.background-image]="'url(' + this.backGroundUrl + ')'"
+  [style]="{ width: '100%', height: '100%' }"
+>
+  <app-navbar [currentPage]="'login'"></app-navbar>
 
-    <mat-form-field>
-      <mat-label>Enter your password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" />
+  <div class="form-container">
+    <div class="example-container">
+      <div class="form-info">
+        <p>Sign In</p>
+      </div>
+      <mat-form-field>
+        <mat-label>Enter your email</mat-label>
+        <input
+          matInput
+          placeholder="pat@example.com"
+          class="form-control"
+          [formControl]="email"
+          (blur)="updateErrorMessage()"
+          required
+        />
+        @if (email.invalid) {
+        <mat-error>{{ errorMessage() }}</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input
+          class="form-control"
+          matInput
+          [type]="hide ? 'password' : 'text'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <!-- <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        placeholder="Enter Password"
+      />
       <button
         mat-icon-button
-        matSuffix
-        (click)="clickEvent($event)"
+        (click)="hide = !hide"
         [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="hide"
       >
         <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-      </button>
-    </mat-form-field>
-    <button mat-flat-button>Sign In</button>
+      </button> -->
+
+      <button mat-flat-button>Sign In</button>
+    </div>
   </div>
+
+  <app-footer></app-footer>
 </div>

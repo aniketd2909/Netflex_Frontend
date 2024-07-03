@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { configuration, mockdata } from '../../MockData';
 import { Card } from '../../interface/card';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-movie-item',

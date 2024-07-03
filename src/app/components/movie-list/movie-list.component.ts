@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { mockdata } from '../../MockData';
-import { Observable } from 'rxjs';
+import { Observable, Subscription, switchMap } from 'rxjs';
 import { Card } from '../../interface/card';
 import { MovieService } from '../../service/movie.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-movie-list',
@@ -11,12 +12,15 @@ import { MovieService } from '../../service/movie.service';
 })
 export class MovieListComponent {
   items: any[] = mockdata.results;
-  movies$ = new Observable<Card[]>();
-  abc: number = 1;
+  movies$!: Observable<Card[]>;
+  sb = new Subscription();
 
   constructor(private movieService: MovieService) {}
   ngOnInit() {
+    this.sb = this.movieService.getMovies().subscribe();
     this.movies$ = this.movieService.movieslist$;
-    this.movieService.getMovies().subscribe();
+  }
+  ngOnDestroy() {
+    this.sb.unsubscribe();
   }
 }

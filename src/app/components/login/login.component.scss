@@ -2,32 +2,33 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-image: url("./../../../../public/Cover-Page.png");
-  background-size: cover;
-  height: 100%;
-  width: 100%;
-  padding-top: 10em;
-}
-
-.form-info {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
+  height: auto;
 }
 
 .example-container {
+  margin-top: 5em;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 0.5em;
   width: 400px;
-  height: 400px;
   background-color: rgba(0, 0, 0, 0.6);
+  height: 350px;
+  row-gap: 0.5em;
+}
+
+.form-control {
+  width: 80%;
+}
+
+.toggle-button {
+  position: absolute;
+  right: 5em;
 }
 
 mat-form-field {
   width: 85%;
+  margin-bottom: 1em; /* Added margin for spacing */
 }
 
 button[mat-icon-button] {
@@ -38,9 +39,10 @@ button[mat-flat-button] {
   width: 85%;
   color: white;
   background-color: red;
+  border-radius: 0;
 }
 
 .form-info {
-  font-size: xx-large;
+  font-size: x-large;
   color: white;
 }

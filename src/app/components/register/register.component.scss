@@ -2,10 +2,8 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-image: url("./../../../assets/img/Cover-Page2.png");
-  height: 100%;
-  width: 100%;
-  padding-top: 7em;
+  // height: 100%;
+  // width: 100%;
 }
 
 .form-info {
@@ -22,11 +20,29 @@
   gap: 0.5em;
   width: 400px;
   height: 400px;
-  background-color: rgba(0, 0, 0, 0.6);
+  // background-color: rgba(0, 0, 0, 0.6);
+  margin-top: 5em;
 }
 
 mat-form-field {
-  width: 85%;
+  width: 100%;
+}
+
+mat-error {
+  text-align: left;
+  font-size: smaller;
+  color: red;
+}
+.input-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+}
+
+.toggle-button {
+  position: absolute;
+  right: 0px;
 }
 
 button[mat-icon-button] {
@@ -34,12 +50,12 @@ button[mat-icon-button] {
 }
 
 button[mat-flat-button] {
-  width: 85%;
+  width: 100%;
   color: white;
   background-color: red;
+  border-radius: 0;
 }
 
 .form-info {
   font-size: medium;
-  color: white;
 }

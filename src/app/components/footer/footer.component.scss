@@ -1,0 +1,19 @@
+.footer-info {
+  display: flex;
+  flex-direction: row;
+  padding-left: 2em;
+  background-color: black;
+  color: azure;
+  font-weight: lighter;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  column-gap: 10em;
+}
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: azure;
+  font-weight: lighter;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding-bottom: 10em;
+}

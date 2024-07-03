@@ -1,6 +1,10 @@
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">NETFLEX</a>
-    <button type="button" class="btn btn-danger">Login</button>
+    <ng-container *ngIf="toggleButton"
+      ><button type="button" class="btn btn-danger" [routerLink]="'/login'">
+        Login
+      </button></ng-container
+    >
   </div>
 </nav>

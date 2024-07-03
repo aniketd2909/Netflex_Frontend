@@ -1,39 +1,52 @@
+<!-- <div
+  [style.background-image]="'url(' + this.backGroundUrl + ')'"
+  [style]="{ width: '100%', height: '100%' }"
+> -->
+<app-navbar [currentPage]="'register'"></app-navbar>
 <div class="form-container">
   <div class="example-container">
     <div class="form-info">
       <p>STEP 1 OF 3</p>
-      <p>Create a password to start your membership</p>
+      <p [style]="{ 'font-size': '1.5em' }">
+        Create a password to start your membership
+      </p>
       <p>Just a Few more steps and you're done!</p>
       <p>We hate paperwork, too.</p>
     </div>
 
-    <mat-form-field>
-      <mat-label>Enter your name</mat-label>
-      <input
-        matInput
-        placeholder=""
-        [formControl]="name"
-        (blur)="updateErrorMessage()"
-        required
-      />
+    <input
+      matInput
+      class="form-control"
+      placeholder="Enter your name"
+      [formControl]="name"
+      (blur)="updateErrorMessage()"
+      required
+    />
+    <div style="text-align: left">
       @if (name.invalid) {
       <mat-error>{{ errorMessage() }}</mat-error>
       }
-    </mat-form-field>
+    </div>
 
-    <mat-form-field>
-      <mat-label>Enter your password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" />
+    <div class="input-container">
+      <input
+        matInput
+        class="form-control"
+        [type]="hide ? 'password' : 'text'"
+        placeholder="Enter Password"
+      />
       <button
         mat-icon-button
-        matSuffix
-        (click)="clickEvent($event)"
+        class="toggle-button"
+        (click)="hide = !hide"
         [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="hide"
       >
         <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
       </button>
-    </mat-form-field>
+    </div>
     <button mat-flat-button>Next</button>
   </div>
 </div>
+<app-footer></app-footer>
+<!-- </div> -->

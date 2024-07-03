@@ -2,11 +2,11 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-image: url("./../../../../public/Home-Page.jpg");
   background-size: cover;
   height: 100%;
   width: 100%;
   padding-top: 10em;
+  padding-bottom: 20em;
 }
 
 .form-info {
@@ -14,6 +14,8 @@
   flex-direction: column;
   align-items: center;
   color: white;
+  font-size: 3em;
+  font-weight: bolder;
 }
 
 .example-container {
@@ -28,11 +30,11 @@
 .email-container {
   display: flex;
   flex-direction: row;
-  width: 70%;
+  width: 50%;
 }
 
 .search-button {
-  width: 50%;
+  width: 45%;
 }
 .btn {
   border-radius: 0px;

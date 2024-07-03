@@ -1,10 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, Subject, map, tap } from 'rxjs';
+import { Injectable, Injector } from '@angular/core';
+import { BehaviorSubject, Observable, Subject, map, tap } from 'rxjs';
 import { Card } from '../interface/card';
 import { Movie, ResData } from '../interface/movie';
 import { title } from 'process';
 import { environment } from './../environment/environment';
+import { ChangeDetectorRef } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
@@ -16,9 +17,10 @@ export class MovieService {
       Authorization: `Bearer ${environment.apiKey}`,
     }),
   };
-  constructor(private http: HttpClient) {}
 
   private movies$ = new Subject<Card[]>();
+
+  constructor(private http: HttpClient) {}
   movieslist$ = this.movies$.asObservable();
   getMovies(): Observable<Card[]> {
     return this.http.get<ResData>(this.movieApiUrl, this.httpOptions).pipe(

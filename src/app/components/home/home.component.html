@@ -1,11 +1,14 @@
-<div class="home-container">
-  <div class="example-container">
-    <div class="form-info">
-      <p style="font-size: xx-large">Unlimited movies, TV Shows, and more</p>
-      <p style="font-size: large">Watch anywhere. Cancel anytime.</p>
-      <p style="font-size: small">Read to watch? enter your email to begin</p>
-    </div>
-    <!-- <mat-form-field>
+<div [style.background-image]="'url(' + this.backGroundUrl + ')'">
+  <app-navbar [currentPage]="'home'"></app-navbar>
+
+  <div class="home-container">
+    <div class="example-container">
+      <div class="form-info">
+        <p>Unlimited movies, TV Shows, and more</p>
+        <p style="font-size: 0.5em">Watch anywhere. Cancel anytime.</p>
+        <p style="font-size: 0.3em">Read to watch? enter your email to begin</p>
+      </div>
+      <!-- <mat-form-field>
       <mat-label>Enter your email</mat-label>
       <input
         matInput
@@ -15,23 +18,29 @@
         required
       />
     </mat-form-field> -->
-    <div class="email-container">
-      <div class="input-container">
-        <input
-          matInput
-          placeholder="pat@example.com"
-          [formControl]="email"
-          (blur)="updateErrorMessage()"
-          required
-          class="form-control mr-sm-2"
-        />
-        @if (email.invalid) {
-        <mat-error style="font-size: small">{{ errorMessage() }}</mat-error>
-        }
-      </div>
-      <div class="search-button">
-        <button class="btn btn-danger" type="submit">Get Started</button>
+      <div class="email-container">
+        <div class="input-container">
+          <input
+            matInput
+            placeholder="pat@example.com"
+            [formControl]="email"
+            (blur)="updateErrorMessage()"
+            required
+            class="form-control mr-sm-2"
+          />
+          @if (email.invalid) {
+          <mat-error style="font-size: small">{{ errorMessage() }}</mat-error>
+          }
+        </div>
+        <div class="search-button">
+          <button class="btn btn-danger" type="submit">Get Started</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<app-cover
+  *ngFor="let backgroundUrl of backgroundUrls"
+  [backgroundUrl]="backgroundUrl"
+></app-cover>
+<app-footer></app-footer>
