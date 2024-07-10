@@ -3,11 +3,10 @@
   (scrolledIndexChange)="onScroll()"
   class="movie-list-viewport"
 >
-  <div class="movie-list">
-    <app-movie-item
-      *cdkVirtualFor="let movie of movies$ | async"
-      [movie]="movie"
-    ></app-movie-item>
+  <div *cdkVirtualFor="let movie of movies$ | async">
+    <div class="movie-list">
+      <app-movie-item [movie]="movie"></app-movie-item>
+    </div>
   </div>
 </cdk-virtual-scroll-viewport> -->
 
@@ -17,7 +16,6 @@
     [movie]="movie"
   ></app-movie-item>
 </div>
-
 <div
   infinite-scroll
   [infiniteScrollDistance]="1"

@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { configuration, mockdata } from '../../MockData';
 import { Card } from '../../interface/card';
 import { Observable } from 'rxjs';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-movie-item',
   templateUrl: './movie-item.component.html',
@@ -14,8 +14,10 @@ export class MovieItemComponent {
   poster_size: string = 'original';
   profile_size: string = 'original';
   showFullContent: boolean = false;
+  constructor(private router: Router) {}
   ngOnInit() {}
-  toggleButton() {
-    this.showFullContent = !this.showFullContent;
+  toggleButton(movieId: number) {
+    this.router.navigate(['/movie', movieId]);
+    // this.showFullContent = !this.showFullContent;
   }
 }

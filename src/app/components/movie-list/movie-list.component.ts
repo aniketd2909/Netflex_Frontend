@@ -27,7 +27,7 @@ export class MovieListComponent {
     this.sb.unsubscribe();
   }
   onScroll() {
-    console.log('scroll');
+    this.currentPage += 1;
     this.movieService.getMovies(this.currentPage.toString()).subscribe();
   }
 }

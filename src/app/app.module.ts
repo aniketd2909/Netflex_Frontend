@@ -25,6 +25,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CoverComponent } from './components/cover/cover.component';
 import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -32,6 +36,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'movieitem', component: MovieItemComponent },
   { path: 'movielist', component: MovieListComponent },
+  { path: 'movie/:id', component: MovieDetailsComponent },
 ];
 @NgModule({
   declarations: [
@@ -44,6 +49,7 @@ const routes: Routes = [
     MovieListComponent,
     FooterComponent,
     CoverComponent,
+    MovieDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +64,9 @@ const routes: Routes = [
     MatCardModule,
     InfiniteScrollDirective,
     ScrollingModule,
+    BrowserAnimationsModule,
+    YouTubePlayerModule,
+    CarouselModule,
     RouterModule.forRoot(routes),
   ],
   providers: [
