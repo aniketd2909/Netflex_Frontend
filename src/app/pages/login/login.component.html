@@ -1,0 +1,72 @@
+<div
+  [style.background-image]="'url(' + this.backGroundUrl + ')'"
+  [style]="{ width: '100%', height: '100%' }"
+>
+  <app-navbar [currentPage]="'login'"></app-navbar>
+  <div [style]="{ height: '65%' }">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-container">
+        <div class="example-container">
+          <div class="form-info">
+            <p>Sign In</p>
+          </div>
+          <mat-form-field>
+            <mat-label for="email">Enter your email</mat-label>
+            <input
+              matInput
+              placeholder="pat@example.com"
+              (blur)="updateErrorMessage()"
+              id="email"
+              formControlName="email"
+            />
+            @if (email.invalid) {
+            <mat-error>{{ errorMessage() }}</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label for="password">Enter your password</mat-label>
+            <input
+              formControlName="password"
+              matInput
+              id="password"
+              [type]="hide ? 'password' : 'text'"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              type="button"
+              (click)="clickEvent($event)"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+            </button>
+          </mat-form-field>
+
+          <button mat-flat-button type="submit" [disabled]="!loginForm.valid">
+            Sign In
+          </button>
+          <p [style]="{ color: 'red' }">{{ loginError }}</p>
+          <a [style]="{ color: 'white' }" [routerLink]="'/register'">
+            Create Account / Register
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+  <app-footer></app-footer>
+</div>
+
+<!-- <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          placeholder="Enter Password"
+        />
+        <button
+          mat-icon-button
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button> -->

@@ -1,0 +1,72 @@
+<!-- <div
+  [style.background-image]="'url(' + this.backGroundUrl + ')'"
+  [style]="{ width: '100%', height: '100%' }"
+> -->
+<app-navbar [currentPage]="'register'"></app-navbar>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="form-container">
+    <div class="example-container">
+      <div class="form-info">
+        <p>STEP 1 OF 3</p>
+        <p [style]="{ 'font-size': '1.5em' }">
+          Create a password to start your membership
+        </p>
+        <p>Just a Few more steps and you're done!</p>
+        <p>We hate paperwork, too.</p>
+      </div>
+
+      <input
+        matInput
+        class="form-control"
+        placeholder="Enter your username"
+        formControlName="username"
+        id="username"
+      />
+      @if (registerForm.controls['username'].invalid &&
+      registerForm.controls['password'].touched) {
+      <span style="color: red">Username is required</span> }
+      <input
+        matInput
+        class="form-control"
+        placeholder="Enter your email"
+        formControlName="email"
+        id="email"
+        (blur)="updateErrorMessage()"
+      />
+
+      @if (email.invalid&&email.touched ) {
+      <span style="color: red">{{ errorMessage() }}</span>
+      }
+
+      <div class="input-container">
+        <input
+          matInput
+          class="form-control"
+          [type]="hide ? 'password' : 'text'"
+          placeholder="Enter Password"
+          formControlName="password"
+          id="password"
+        />
+        <button
+          mat-icon-button
+          class="toggle-button"
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+          type="button"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </div>
+      @if (registerForm.controls['password'].invalid &&
+      registerForm.controls['password'].touched) {
+      <span style="color: red">Password is required</span> }
+      <button type="submit" mat-flat-button [disabled]="!registerForm.valid">
+        Next
+      </button>
+      <p [style]="{ color: 'red' }">{{ registerError }}</p>
+    </div>
+  </div>
+</form>
+<app-footer></app-footer>
+<!-- </div> -->

@@ -1,78 +1,34 @@
 import { NgModule } from '@angular/core';
-import {
-  BrowserModule,
-  provideClientHydration,
-} from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { provideClientHydration } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
-import { provideHttpClient } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withFetch,
+  withInterceptors,
+} from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { NavbarComponent } from './navbar/navbar.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MovieItemComponent } from './components/movie-item/movie-item.component';
-import { MovieListComponent } from './components/movie-list/movie-list.component';
-import { MatCardModule } from '@angular/material/card';
-import { FooterComponent } from './components/footer/footer.component';
-import { CoverComponent } from './components/cover/cover.component';
-import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
-import { ScrollingModule } from '@angular/cdk/scrolling';
-import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { AppRoutingModule } from './approuting.module';
+import { ErrorInterceptor } from './core/interceptor/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { YouTubePlayerModule } from '@angular/youtube-player';
-import { CarouselModule } from 'ngx-owl-carousel-o';
-const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'movieitem', component: MovieItemComponent },
-  { path: 'movielist', component: MovieListComponent },
-  { path: 'movie/:id', component: MovieDetailsComponent },
-];
+import { AuthInterceptor } from './core/interceptor/auth.interceptor';
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    LoginComponent,
-    RegisterComponent,
-    NavbarComponent,
-    MovieItemComponent,
-    MovieListComponent,
-    FooterComponent,
-    CoverComponent,
-    MovieDetailsComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    InfiniteScrollDirective,
-    ScrollingModule,
-    BrowserAnimationsModule,
-    YouTubePlayerModule,
-    CarouselModule,
-    RouterModule.forRoot(routes),
-  ],
+  declarations: [AppComponent],
+  imports: [SharedModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [
     provideClientHydration(),
-    provideHttpClient(),
+    provideHttpClient(
+      withFetch(),
+      withInterceptors([ErrorInterceptor, AuthInterceptor])
+    ),
     provideAnimationsAsync(),
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AuthInterceptor,
+    //   multi: true,
+    // },
   ],
   bootstrap: [AppComponent],
 })
