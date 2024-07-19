@@ -1,4 +1,4 @@
-# Notflix
+# Netflex
 
 <img width="1435" alt="Screenshot 2024-06-28 at 9 26 33 PM" src="https://github.com/aniketd2909/Netflex_Frontend/assets/44261210/898163bb-669a-4433-98e3-b81a3032cbe5">
 
