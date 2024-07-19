@@ -1,0 +1,24 @@
+<app-navbar [currentPage]="'register'"></app-navbar>
+
+<div class="form-container">
+  <div class="example-container">
+    <div class="form-info">
+      <p>STEP 2 OF 3</p>
+      <p [style]="{ 'font-size': '1.5em' }">Choose the right plan for you</p>
+      <p>Just a Few more steps and you're done!</p>
+      <p>We hate paperwork, too.</p>
+    </div>
+    <mat-radio-group
+      aria-label="Select an option"
+      [(ngModel)]="roleOption"
+      name="option"
+    >
+      <mat-radio-button value="USER">Basic</mat-radio-button>
+      <mat-radio-button value="SUPERUSER">Standard</mat-radio-button>
+      <mat-radio-button value="ADMIN">Premium</mat-radio-button>
+    </mat-radio-group>
+    <button (click)="roleSubmit()" mat-flat-button>Next</button>
+  </div>
+</div>
+
+<app-footer></app-footer>

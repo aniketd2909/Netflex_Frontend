@@ -14,20 +14,4 @@ export class HomeComponent {
   backgroundUrls: string[] = backgroundUrls;
   errorMessage = signal('');
   backGroundUrl: string = '/assets/img/Home-Page.jpg';
-  constructor() {
-    merge(this.email.statusChanges, this.email.valueChanges)
-      .pipe(takeUntilDestroyed())
-      .subscribe(() => this.updateErrorMessage());
-  }
-
-  ngOnInit() {}
-  updateErrorMessage() {
-    if (this.email.hasError('required')) {
-      this.errorMessage.set('You must enter a value');
-    } else if (this.email.hasError('email')) {
-      this.errorMessage.set('Not a valid email');
-    } else {
-      this.errorMessage.set('');
-    }
-  }
 }

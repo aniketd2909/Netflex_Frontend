@@ -1,0 +1,36 @@
+.form-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 35em;
+}
+
+.form-info {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  row-gap: 1em;
+  font-size: medium;
+}
+
+.example-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5em;
+  width: 20em;
+  height: 40em;
+  margin-top: 5em;
+}
+
+button[mat-flat-button] {
+  width: 100%;
+  color: white;
+  background-color: red;
+  border-radius: 0;
+}
+
+.custom-radio-button {
+  color: red;
+}

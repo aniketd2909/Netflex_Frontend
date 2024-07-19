@@ -26,16 +26,21 @@
   gap: 0.2em;
   padding-top: 4em;
 }
-
-.email-container {
-  display: flex;
-  flex-direction: row;
-  width: 50%;
-}
-
 .search-button {
-  width: 45%;
+  width: auto;
 }
+.email-container {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 2px;
+  align-items: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .btn {
   border-radius: 0px;
 }

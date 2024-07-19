@@ -13,7 +13,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
-
+import { MatRadioModule } from '@angular/material/radio';
 @NgModule({
   declarations: [NavbarComponent, FooterComponent],
   imports: [CommonModule, InfiniteScrollDirective, RouterModule],
@@ -33,6 +33,7 @@ import { RouterModule } from '@angular/router';
     FooterComponent,
     RouterModule,
     CommonModule,
+    MatRadioModule,
   ],
 })
 export class SharedModule {}

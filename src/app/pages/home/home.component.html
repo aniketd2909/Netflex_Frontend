@@ -8,32 +8,18 @@
         <p style="font-size: 0.5em">Watch anywhere. Cancel anytime.</p>
         <p style="font-size: 0.3em">Read to watch? enter your email to begin</p>
       </div>
-      <!-- <mat-form-field>
-      <mat-label>Enter your email</mat-label>
-      <input
-        matInput
-        placeholder="pat@example.com"
-        [formControl]="email"
-        (blur)="updateErrorMessage()"
-        required
-      />
-    </mat-form-field> -->
+
       <div class="email-container">
         <div class="input-container">
           <input
             matInput
             placeholder="pat@example.com"
-            [formControl]="email"
-            (blur)="updateErrorMessage()"
             required
             class="form-control mr-sm-2"
           />
-          @if (email.invalid) {
-          <mat-error style="font-size: small">{{ errorMessage() }}</mat-error>
-          }
         </div>
         <div class="search-button">
-          <button class="btn btn-danger" type="submit">Get Started</button>
+          <button class="btn btn-danger" type="submit">Start</button>
         </div>
       </div>
     </div>
